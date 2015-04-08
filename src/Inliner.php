@@ -2,7 +2,18 @@
 
 class Inliner
 {
+    /**
+     * fileExt
+     *
+     * @var mixed
+     */
     protected $fileExt;
+
+    /**
+     * pathTop
+     *
+     * @var mixed
+     */
     protected $pathTop;
 
     /**
@@ -61,6 +72,7 @@ class Inliner
     protected function cleanClass($class)
     {
         $class = preg_replace('/\<\?php/', '', $class);
+        $class = preg_replace('/\?\>/', '', $class);
         $class = preg_replace('/namespace\s[\w+\\\]+;/', '', $class);
         $class = preg_replace('/use\s[\w+\\\]+;/', '', $class);
         $class = preg_replace('/(\s)(\\\)(\w)/i', '${1}${3}', $class);
